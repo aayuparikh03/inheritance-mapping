@@ -25,19 +25,13 @@ public class EmployeeController {
         return employeeService.findAll();
     }
 
-    @PostMapping("/full-time")
-    public Employee createFullTimeEmployee(@RequestBody FullTimeEmployee fullTimeEmployee) {
-        return employeeService.save(fullTimeEmployee);
+    @PostMapping("/fulltime")
+    public Employee addFullTimeEmployee(@RequestBody FullTimeEmployee employee) {
+        return employeeService.save(employee);
     }
 
-    @PostMapping("/part-time")
-    public Employee createPartTimeEmployee(@RequestBody PartTimeEmployee partTimeEmployee) {
-        return employeeService.save(partTimeEmployee);
-    }
-
-    @DeleteMapping("/{id}")
-    public String deleteEmployee(@PathVariable Long id) {
-        employeeService.deleteById(id);
-        return "Employee with ID " + id + " has been deleted.";
+    @PostMapping("/parttime")
+    public Employee addPartTimeEmployee(@RequestBody PartTimeEmployee employee) {
+        return employeeService.save(employee);
     }
 }

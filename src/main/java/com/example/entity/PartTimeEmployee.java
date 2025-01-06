@@ -1,26 +1,32 @@
 package com.example.entity;
 
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+
+import java.util.Date;
 
 @Entity
-@DiscriminatorValue("PART_TIME")
 public class PartTimeEmployee extends Employee {
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastUpdated;
 
-    private double hourlyRate;
-
-    public PartTimeEmployee() {}
-
-    public PartTimeEmployee(String name, double hourlyRate) {
-        super(name);
-        this.hourlyRate = hourlyRate;
+    public Date getLastUpdated() {
+        return lastUpdated;
     }
 
-    public double getHourlyRate() {
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    private Double hourlyRate;
+
+    // Getters and Setters
+    public Double getHourlyRate() {
         return hourlyRate;
     }
 
-    public void setHourlyRate(double hourlyRate) {
+    public void setHourlyRate(Double hourlyRate) {
         this.hourlyRate = hourlyRate;
     }
 }

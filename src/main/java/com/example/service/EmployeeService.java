@@ -24,8 +24,4 @@ public class EmployeeService {
     public Employee save(Employee employee) {
         return employeeRepository.save(employee);
     }
-
-    public void deleteById(Long id) {
-        employeeRepository.deleteById(id);
-    }
 }

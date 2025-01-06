@@ -1,26 +1,18 @@
 package com.example.entity;
 
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("FULL_TIME")
 public class FullTimeEmployee extends Employee {
 
-    private double salary;
+    private Double salary;
 
-    public FullTimeEmployee() {}
-
-    public FullTimeEmployee(String name, double salary) {
-        super(name);
-        this.salary = salary;
-    }
-
-    public double getSalary() {
+    // Getters and Setters
+    public Double getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(Double salary) {
         this.salary = salary;
     }
 }
