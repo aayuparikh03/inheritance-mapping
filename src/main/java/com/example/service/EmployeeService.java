@@ -9,23 +9,14 @@ import java.util.List;
 
 @Service
 public class EmployeeService {
-
-    private final EmployeeRepository employeeRepository;
-
     @Autowired
-    public EmployeeService(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    private EmployeeRepository repository;
+
+    public Employee save(Employee employee) {
+        return repository.save(employee);
     }
 
     public List<Employee> findAll() {
-        return employeeRepository.findAll();
-    }
-
-    public Employee save(Employee employee) {
-        return employeeRepository.save(employee);
-    }
-
-    public void deleteById(Long id) {
-        employeeRepository.deleteById(id);
+        return repository.findAll();
     }
 }

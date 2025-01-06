@@ -1,25 +1,17 @@
 package com.example.entity;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import com.example.entity.Employee;
+import jakarta.persistence.*;
 
 @Entity
-@DiscriminatorValue("PART_TIME")
+@PrimaryKeyJoinColumn(name = "employee_id")
 public class PartTimeEmployee extends Employee {
-
     private double hourlyRate;
 
-    public PartTimeEmployee() {}
-
-    public PartTimeEmployee(String name, double hourlyRate) {
-        super(name);
-        this.hourlyRate = hourlyRate;
-    }
-
+    // Getters and Setters
     public double getHourlyRate() {
         return hourlyRate;
     }
-
     public void setHourlyRate(double hourlyRate) {
         this.hourlyRate = hourlyRate;
     }

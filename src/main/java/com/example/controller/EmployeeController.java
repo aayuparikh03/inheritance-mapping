@@ -12,32 +12,21 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
-
-    private final EmployeeService employeeService;
-
     @Autowired
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    private EmployeeService service;
+
+    @PostMapping("/full-time")
+    public Employee createFullTimeEmployee(@RequestBody FullTimeEmployee employee) {
+        return service.save(employee);
+    }
+
+    @PostMapping("/part-time")
+    public Employee createPartTimeEmployee(@RequestBody PartTimeEmployee employee) {
+        return service.save(employee);
     }
 
     @GetMapping
     public List<Employee> getAllEmployees() {
-        return employeeService.findAll();
-    }
-
-    @PostMapping("/full-time")
-    public Employee createFullTimeEmployee(@RequestBody FullTimeEmployee fullTimeEmployee) {
-        return employeeService.save(fullTimeEmployee);
-    }
-
-    @PostMapping("/part-time")
-    public Employee createPartTimeEmployee(@RequestBody PartTimeEmployee partTimeEmployee) {
-        return employeeService.save(partTimeEmployee);
-    }
-
-    @DeleteMapping("/{id}")
-    public String deleteEmployee(@PathVariable Long id) {
-        employeeService.deleteById(id);
-        return "Employee with ID " + id + " has been deleted.";
+        return service.findAll();
     }
 }
